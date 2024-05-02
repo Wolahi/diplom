@@ -10,7 +10,7 @@ export const MainPage = () => {
       <Content>
         <TestWrapper>
           {testCards.map((test) => (
-            <TestCard test={test} />
+            <TestCard key={test.id} test={test} />
           ))}
         </TestWrapper>
       </Content>

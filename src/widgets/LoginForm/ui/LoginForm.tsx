@@ -2,13 +2,20 @@ import { LoginFormContainer, LoginFormWrapper } from "./LoginForm.styled.ts";
 import { Button, Input, Typography } from "antd";
 import { useNavigate } from "react-router";
 import { Controller, useForm } from "react-hook-form";
+import { $api } from "../../../app/api/api.ts";
+import useAuth from "../../../app/module/useAuth.ts";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const { control, handleSubmit } = useForm();
+  const { login } = useAuth();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    const req = await $api.post("api/v1/login", {
+      data,
+    });
+    login(req.data.token);
+    navigate("/");
   };
 
   return (

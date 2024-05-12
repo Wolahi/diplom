@@ -5,10 +5,10 @@ const useAuth = (): {
   logout: () => void;
   isAuth: boolean;
 } => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(Boolean(localStorage.getItem("token")));
 
   const login = (authToken: string) => {
-    localStorage.setItem("token", JSON.stringify(authToken));
+    localStorage.setItem("token", authToken);
     setIsAuth(true);
   };
 

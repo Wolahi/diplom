@@ -5,7 +5,7 @@ const useAuth = (): {
   logout: () => void;
   isAuth: boolean;
 } => {
-  const [isAuth, setIsAuth] = useState(Boolean(localStorage.getItem("token")));
+  const [isAuth, setIsAuth] = useState(false);
 
   const login = (authToken: string) => {
     localStorage.setItem("token", authToken);

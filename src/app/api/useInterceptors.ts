@@ -3,11 +3,9 @@ import { $api } from "./api.ts";
 
 const useInterceptors = () => {
   const token = useMemo(
-    () => JSON.parse(String(localStorage.getItem("token"))),
+    () => String(localStorage.getItem("token")),
     [localStorage],
   );
-
-  console.log(token);
 
   $api.interceptors.request.use(function (config): any {
     if (token) {
